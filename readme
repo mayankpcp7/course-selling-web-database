@@ -1,0 +1,11 @@
+// how to make a course selling website database
+
+// step-1. first of all define three schemas Admin schema , user schema , course schema in a db folder index.js file
+// step-2. make middelwares of admin and user schema in middlewares folder admin.js and user.js file
+
+// in admin middleware we expect from header username , password
+// we have to check that the middleware extry hits the correct database
+
+// step-3 then we have to make routes for admin sign up in routes folder admin.js file
+// after getting our admin username password detail we will give them a id and a course route
+// course will req from body for title , description , image link , courseprice
