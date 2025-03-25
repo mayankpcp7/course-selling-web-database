@@ -1,4 +1,4 @@
-const { Admin } = require("../db");
+const { Admin } = require("../db/index");
 
 // Middleware for admin authentication
 async function adminMiddleware(req, res, next) {

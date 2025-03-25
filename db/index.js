@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json()); // Middleware for JSON parsing
 
 // Import routes
-const adminRoutes = require("./routes/admin");
+const adminRoutes = require("../routes/admin");
 app.use("/admin", adminRoutes);
 
 // Connect to MongoDB
