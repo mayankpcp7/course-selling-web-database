@@ -1,11 +1,8 @@
 const { User } = require("../db/index");
-
-// Middleware for handling admin authentication
+// Middleware for admin authentication
 function adminMiddleware(req, res, next) {
   const username = req.headers.username;
   const password = req.headers.password;
-
-  // Check if the admin exists in the database
   User.findOne({
     username: username,
     password: password,
@@ -14,8 +11,10 @@ function adminMiddleware(req, res, next) {
       next();
     } else {
       res.status(403).json({
-        msg: "user does not exists",
+        message: "user does not exist",
       });
     }
   });
 }
+
+module.exports = userMiddleware;

@@ -1,18 +1,20 @@
 const { Admin } = require("../db/index");
-
 // Middleware for admin authentication
-async function adminMiddleware(req, res, next) {
-  const { username, password } = req.headers;
-
-  try {
-    const admin = await Admin.findOne({ username, password });
-    if (!admin) {
-      return res.status(403).json({ msg: "Admin does not exist" });
+function adminMiddleware(req, res, next) {
+  const username = req.headers.username;
+  const password = req.headers.password;
+  Admin.findOne({
+    username: username,
+    password: password,
+  }).then(function (value) {
+    if (value) {
+      next();
+    } else {
+      res.status(403).json({
+        message: "admin does not exist",
+      });
     }
-    next();
-  } catch (error) {
-    res.status(500).json({ error: "Internal server error" });
-  }
+  });
 }
 
 module.exports = adminMiddleware;
